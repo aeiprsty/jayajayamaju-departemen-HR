@@ -4,7 +4,7 @@
 
 Proyek ini bertujuan untuk menganalisis faktor-faktor yang berhubungan dengan employee attrition pada perusahaan Jaya Jaya Maju serta membangun sistem peringatan awal untuk membantu departemen Human Resources (HR) mengidentifikasi karyawan yang memiliki risiko attrition lebih tinggi.
 
-Project mencakup proses **data understanding, data preparation, exploratory analysis, modeling, evaluation, dan dashboard**.
+Project mencakup proses **data understanding, data preparation, exploratory analysis, modeling, evaluation, dashboard, dan deployment sederhana**.
 
 ## Business Understanding
 
@@ -222,13 +222,13 @@ Program menerima data satu karyawan dan menghasilkan:
 jayajayamaju-departemen-HR/
 ├── model/
 │   └── model.pkl
+├── README.md
 ├── employee_attrition.db
 ├── employee_data.csv
 ├── metabase.db.mv.db
 ├── notebook.ipynb
 ├── pppiiiy_dicoding-dashboard.png
 ├── prediction.py
-├── README.md
 └── requirements.txt
 ```
 
