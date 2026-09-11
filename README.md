@@ -107,41 +107,35 @@ notebook.ipynb
 
 Dashboard dibuat menggunakan Metabase dan database SQLite.
 
-Pastikan Docker Desktop sudah berjalan, kemudian jalankan:
+1. Pastikan Docker Desktop sudah berjalan.
+2. Jalankan container Metabase dengan perintah berikut pada PowerShell:
 
 ```powershell
-docker run -d -p 3000:3000 --name metabase -v "D:\submission:/data" metabase/metabase
+docker run -d `
+  -p 3000:3000 `
+  -v "D:\submission:/data" `
+  -e "MB_DB_TYPE=h2" `
+  -e "MB_DB_FILE=/data/metabase.db" `
+  --name metabase `
+  metabase/metabase
+  ```
+3. Tunggu hingga Metabase selesai melakukan proses inisialisasi. Status dapat diperiksa dengan:
+```
+curl.exe http://localhost:3000/api/health
 ```
 
-Sesuaikan path `D:\submission` dengan lokasi folder project pada komputer yang digunakan.
-
-Setelah container berjalan, buka:
-
-```text
-http://localhost:3000
+Pastikan hasilnya menunjukkan:
+```
+{"status":"ok"}
 ```
 
-Gunakan kredensial Metabase berikut:
+4. Buka Metabase melalui: http://127.0.0.1:3000/
+5. Login menggunakan kredensial Metabase berikut:
 - Username: root@mail.com
 - Password: root123
+7. Setelah berhasil login, pilih menu Your personal collection, kemudian klik koleksi yang berjudul "Jaya Jaya Maju Departemen HR" untuk membuka dashboard.
 
-Database yang digunakan oleh dashboard adalah:
-
-```text
-data/employee_attrition.db
-```
-
-Pada koneksi SQLite di Metabase, gunakan path:
-
-```text
-/data/data/employee_attrition.db
-```
-
-File database internal Metabase yang telah dikonfigurasi disertakan dalam submission:
-
-```text
-metabase.db.mv.db
-```
+Dashboard dapat digunakan untuk melihat analisis employee attrition dan melakukan filtering berdasarkan Department, Job Role, dan OverTime.
 
 #### 5. Menjalankan Sistem Prediksi
 
@@ -213,12 +207,6 @@ Beberapa temuan utama dari dashboard adalah:
 | Job Role          | Laboratory Technician |         26,06% |
 | Job Satisfaction  | Level 1               |         22,44% |
 | Department        | Sales                 |         20,69% |
-
-Dashboard juga dilengkapi dengan file database Metabase:
-
-```text
-metabase.db.mv.db
-```
 
 ## Conclusion
 
